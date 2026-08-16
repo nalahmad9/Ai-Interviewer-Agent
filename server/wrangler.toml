@@ -1,0 +1,10 @@
+name = "tech-backend-api"
+main = "src/server.js"
+compatibility_date = "2026-03-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+PORT = "5000"
+MONGODB_URI = "mongodb://nalahmad832_db_user:yGFGHRvEtfF9G821@ac-dnzkarx-shard-00-00.nzdmnz3.mongodb.net:27017,ac-dnzkarx-shard-00-01.nzdmnz3.mongodb.net:27017,ac-dnzkarx-shard-00-02.nzdmnz3.mongodb.net:27017/ai-interview?ssl=true&replicaSet=atlas-4m2juc-shard-0&authSource=admin&appName=Ai-Agent"
+GEMINI_MODEL = "gemini-3.5-flash-lite"
+GROQ_MODEL = "llama-3.3-70b-versatile"
