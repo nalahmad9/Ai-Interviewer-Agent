@@ -33,7 +33,7 @@ export default function App() {
     const [questionNumber, setQuestionNumber] = useState(0);
     const [maxQuestions, setMaxQuestions] = useState(0);
     const [answerText, setAnswerText] = useState("");
-    const [messages, setMessages] = useState([]); // {role: 'ai'|'user', text, isQuestion, questionNumber}
+    const [messages, setMessages] = useState([]); 
     const [finalEvaluation, setFinalEvaluation] = useState(null);
 
     const messagesEndRef = useRef(null);
@@ -44,12 +44,31 @@ export default function App() {
     }, [messages]);
 
     useEffect(() => {
-        // fixed: auto-grow the textarea to fit its content instead of showing an internal scrollbar
         if (textareaRef.current) {
             textareaRef.current.style.height = "auto";
             textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
         }
     }, [answerText]);
+
+    // Handle browser back button behavior based on the current stage
+    useEffect(() => {
+        const handlePopState = () => {
+            // If the user hits the browser back button while in interview/results, reset to setup
+            setStage("setup");
+            setInterviewId(null);
+            setRole("");
+            setDifficulty("");
+            setQuestionNumber(0);
+            setMaxQuestions(0);
+            setAnswerText("");
+            setMessages([]);
+            setFinalEvaluation(null);
+            setError(null);
+        };
+
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, []);
 
     async function handleStart(setupData) {
         setLoading(true);
@@ -73,6 +92,9 @@ export default function App() {
                     text: result.question
                 }
             ]);
+            
+            // Push a new history state when entering the interview so the back button can catch it
+            window.history.pushState({ stage: "interview" }, "", window.location.href);
             setStage("interview");
         } catch (err) {
             setError(err.message);
@@ -95,10 +117,8 @@ export default function App() {
             const result = await submitAnswer(interviewId, trimmed);
 
             if (result.type === "followup") {
-                // Same question — AI pushes back or digs deeper, no progress change.
                 setMessages((prev) => [...prev, { role: "ai", text: result.message }]);
             } else if (result.type === "next_question") {
-                // Question finalized with a score — show feedback, then the next question.
                 setMessages((prev) => [
                     ...prev,
                     { role: "ai", text: result.evaluation.feedback },
@@ -113,6 +133,7 @@ export default function App() {
             } else if (result.type === "completed") {
                 setMessages((prev) => [...prev, { role: "ai", text: result.evaluation.feedback }]);
                 setFinalEvaluation(result.finalEvaluation);
+                window.history.pushState({ stage: "results" }, "", window.location.href);
                 setStage("results");
             }
         } catch (err) {
