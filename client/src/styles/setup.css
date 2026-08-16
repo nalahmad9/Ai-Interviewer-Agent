@@ -1,0 +1,113 @@
+@import './tokens.css';
+
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 32px;
+}
+
+.setup-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.field-input {
+  background: var(--bg-void-soft);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-control);
+  padding: 12px 14px;
+  color: var(--text-primary);
+  font-size: 15px;
+  transition: border-color 0.15s ease;
+}
+
+.field-input:focus {
+  border-color: var(--accent-violet);
+}
+
+.field-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.field-options-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.field-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 8px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-void-soft);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.field-option:hover {
+  border-color: var(--border-active);
+  color: var(--text-primary);
+}
+
+.field-option small {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.field-option-active {
+  background: var(--accent-violet);
+  border-color: var(--accent-violet);
+  color: white;
+}
+
+.field-option-active small {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.submit-btn {
+  margin-top: 4px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: var(--radius-control);
+  background: linear-gradient(135deg, var(--accent-violet), var(--accent-violet-bright));
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

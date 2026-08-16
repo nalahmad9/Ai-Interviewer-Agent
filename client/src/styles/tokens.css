@@ -1,0 +1,26 @@
+:root {
+  /* Color */
+  --bg-void: #0a0a12;
+  --bg-void-soft: #0e0e18;
+  --surface-card: #14141f;
+  --surface-card-hover: #191926;
+  --border-subtle: #24243a;
+  --border-active: #6d5ef5;
+  --accent-violet: #6d5ef5;
+  --accent-violet-bright: #8b7cf6;
+  --accent-violet-dim: rgba(109, 94, 245, 0.15);
+  --text-primary: #f2f2f7;
+  --text-secondary: #8b8b9e;
+  --text-tertiary: #5c5c72;
+  --success: #4ade80;
+  --danger: #f87171;
+
+  /* Type */
+  --font-display: "Sora", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Radius */
+  --radius-card: 20px;
+  --radius-control: 12px;
+  --radius-pill: 999px;
+}
