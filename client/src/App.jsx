@@ -170,10 +170,7 @@ export default function App() {
             {stage === "setup" && (
                 <div className="app-grid">
                     <div className="hero">
-                        <div className="hero-badge">
-                            <span className="hero-badge-dot" />
-                            Powered by Gemini
-                        </div>
+                        
                         <h1 className="hero-title">Practice your next tech interview</h1>
                         <p className="hero-subtitle">
                             A short, conversational technical interview. Pick a role, and your AI interviewer will ask questions, react to your answers, and give you honest feedback — one message at a time.
