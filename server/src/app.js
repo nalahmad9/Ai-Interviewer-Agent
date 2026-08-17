@@ -5,7 +5,7 @@ const interviewRoutes = require("./routes/interviewRoutes");
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: true
 }));
 app.use(express.json());
 
