@@ -53,9 +53,16 @@ button {
 }
 
 @media (max-width: 860px) {
+  .app-shell {
+    padding: 24px 16px;
+    align-items: flex-start;
+  }
   .app-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+  .hero-title {
+    font-size: 32px !important;
   }
 }
 

@@ -16,6 +16,7 @@
   margin-bottom: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--border-subtle);
+  gap: 12px;
 }
 
 .chat-title {
@@ -166,4 +167,21 @@
   color: var(--danger);
   font-size: 13px;
   margin-top: 12px;
+}
+
+/* Responsive Overrides for Mobile Viewports */
+@media (max-width: 640px) {
+  .chat-shell {
+    padding: 16px 12px;
+  }
+  .chat-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .chat-progress-track {
+    width: 90px;
+  }
+  .chat-row {
+    max-width: 90%;
+  }
 }

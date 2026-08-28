@@ -35,6 +35,7 @@
   color: var(--text-primary);
   font-size: 15px;
   transition: border-color 0.15s ease;
+  width: 100%;
 }
 
 .field-input:focus {
@@ -64,6 +65,7 @@
   font-size: 14px;
   font-weight: 600;
   transition: all 0.15s ease;
+  text-align: center;
 }
 
 .field-option:hover {
@@ -97,6 +99,7 @@
   font-size: 15px;
   font-weight: 600;
   transition: opacity 0.15s ease, transform 0.1s ease;
+  width: 100%;
 }
 
 .submit-btn:hover:not(:disabled) {
@@ -110,4 +113,15 @@
 .submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Responsive Overrides for Setup Options */
+@media (max-width: 640px) {
+  .card {
+    padding: 20px;
+  }
+  .field-options, 
+  .field-options-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
