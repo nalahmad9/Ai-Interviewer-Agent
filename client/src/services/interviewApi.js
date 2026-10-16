@@ -1,6 +1,5 @@
-const BASE_URL = import.meta.env.VITE_API_URL 
-  ? `${import.meta.env.VITE_API_URL}/api/interviews`
-  : "https://tech-backend-api.tech-backend-nada.workers.dev/api/interviews";
+const API_ORIGIN = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace(/\/$/, "");
+const BASE_URL = `${API_ORIGIN}/api/interviews`;
 
 async function handleResponse(response) {
     const data = await response.json().catch(() => ({}));
@@ -25,10 +24,5 @@ export async function submitAnswer(interviewId, answer) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ answer }),
     });
-    return handleResponse(response);
-}
-
-export async function getInterview(interviewId) {
-    const response = await fetch(`${BASE_URL}/${interviewId}`);
     return handleResponse(response);
 }
